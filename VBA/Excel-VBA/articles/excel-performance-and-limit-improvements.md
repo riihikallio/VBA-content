@@ -18,7 +18,7 @@ The 32-bit versions of Excel 2013 and Excel 2016 now have Large Address Aware (L
 
 LAA doubles available virtual memory from 2 GB to 4 GB on 64-bit versions of Windows, and increases available virtual memory from 2 GB to 3 GB on 32-bit versions of Windows.
 
-For more information, see [LAA Capability Change for Excel](https://support.microsoft.com/en-ca/help/3160741/large-address-aware-capability-change-for-excel "LAA Capability Change for Excel").
+For more information, see [LAA Capability Change for Excel](https://support.microsoft.com/en-ca/help/3160741/large-address-aware-capability-change-for-excel).
 
 To download a tool that shows how much virtual memory is available and how much is being used, see [Excel Memory Checking Tool](https://fastexcel.wordpress.com/2016/11/27/excel-memory-checking-tool-using-laa-to-increase-useable-excel-memory/).
 
@@ -115,7 +115,7 @@ In addition, starting in Excel 2010, support for hardware acceleration improves 
  
 ### Calculation improvements
 
-Starting in Excel 2007, multithreaded calculation improved calculation performance. For more information, see [Multithreaded Calculation](#MultithreadedCalculation). 
+Starting in Excel 2007, multithreaded calculation improved calculation performance. 
 
 Starting in Excel 2010, additional performance improvements were made to further increase calculation speed. Excel 2010 can call user-defined functions asynchronously. Calling functions asynchronously improves performance by allowing several calculations to run at the same time. When you run user-defined functions on a compute cluster, calling functions asynchronously enables several computers to be used to complete the calculations. For more information, see [Asynchronous User-Defined Functions](http://msdn.microsoft.com/library/142eb27e-fb6f-4da3-bfb7-a88115bbb5d5%28Office.14%29.aspx).
 
@@ -139,7 +139,7 @@ With a wealth of statistical analysis functions, support for constructing comple
  
 One solution is to use Windows HPC Server 2008 to scale out Excel calculations across multiple nodes in a Windows high-performance computing (HPC) cluster in parallel. There are three methods for running Excel 2010 calculations in a Windows HPC Server 2008 based cluster: running Excel workbooks in a cluster, running Excel user-defined functions (UDFs) in a cluster, and using Excel as a cluster service-oriented architecture (SOA) client. 
 
-For more information about HPC Services for Excel 2010, see [Accelerating Excel 2010 with Windows HPC Server 2008](http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=a48ac6fe-7ea0-4314-97c7-d6875bc895c5).
+For more information about HPC Services for Excel 2010, see [Accelerating Excel 2010 with Windows HPC Server 2008 R2](http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=a48ac6fe-7ea0-4314-97c7-d6875bc895c5).
 
 ## Conclusion
 <a name="office2016excelperf_Conclusion"> </a>
@@ -161,6 +161,6 @@ For more information about Excel calculation performance and methods, memory usa
     
 - [Excel Developer Portal](http://msdn.microsoft.com/en-us/office/aa905411.aspx)
     
-- [Slow - Fast Level Names](https://support.office.com/en-US/article/Changes-to-Slow-Fast-level-names-for-Office-Insider-for-Windows-desktop-055ee4f9-9ce3-4fb8-8a9a-ca6745867d52)
+- [Changes to Slow/Fast level names for Office Insider for Windows desktop](https://support.office.com/en-US/article/Changes-to-Slow-Fast-level-names-for-Office-Insider-for-Windows-desktop-055ee4f9-9ce3-4fb8-8a9a-ca6745867d52)
     
   
