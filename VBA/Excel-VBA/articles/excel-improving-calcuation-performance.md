@@ -1,7 +1,7 @@
 ---
-title: Excel performance: Improving calculation performance
+title: Excel performance - Improving calculation performance
 description: Discover how to improve workbook performance by focusing on calculation improvements in Excel 2016.
-ms.date: 9/29/2017 
+ms.date: 09/29/2017 
 ---
 
 # Excel performance: Improving calculation performance
@@ -94,9 +94,11 @@ Excel also allows for the calculation of a range of cells by using the Visual Ba
 
 - **Range.Calculate** calculates the range resolving all dependencies within the range.
     
-Because **CalculateRowMajorOrder** does not resolve any dependencies within the range that is being calculated, it is usually significantly faster than **Range.Calculate**. However, it should be used with care because it may not give the same results as **Range.Calculate**. For more information, see [Excel performance: Performance and limit improvements](excel-performance-and-limit-improvements.md).
+Because **CalculateRowMajorOrder** does not resolve any dependencies within the range that is being calculated, it is usually significantly faster than **Range.Calculate**. However, it should be used with care because it may not give the same results as **Range.Calculate**. 
     
 **Range.Calculate** is one of the most useful tools in Excel for performance optimization because you can use it to time and compare the calculation speed of different formulas.
+
+For more information, see [Excel performance: Performance and limit improvements](excel-performance-and-limit-improvements.md).
 
 ### Volatile functions
 
@@ -131,7 +133,7 @@ A formula is flagged as uncalculated when it refers to (depends on) a cell or fo
 
 - It was entered.
 - It was changed.
-- It is in an AutoFilter list and the criteria drop-down list was enabled.
+- It is in an AutoFilter list, and the criteria drop-down list was enabled.
 - It is flagged as uncalculated.
 
 A formula that is flagged as uncalculated is evaluated when the worksheet, workbook, or Excel instance that contains it is calculated or recalculated. 
@@ -141,18 +143,13 @@ The circumstances that cause a defined name to be evaluated differ from those fo
 - A defined name is evaluated every time that a formula that refers to it is evaluated so that using a name in multiple formulas can cause the name to be evaluated multiple times. 
 - Names that are not referred to by any formula are not calculated even by a full calculation. 
 
-### Data Tables
+### Data tables
 
-Excel data tables (on the **Data** tab, in the **Data Tools** group, click **What-If Analysis**, and then click **Data Table**) should not be confused with the table feature (on the **Home** tab, in the **Styles** group, click **Format as Table**, or, on the **Insert** tab, in the **Tables** group, click **Table**). Excel data tables do multiple recalculations of the workbook, each driven by the different values in the table. Excel first calculates the workbook normally. Then, for each pair of row and column values, it substitutes the values, does a single-threaded recalculation, and stores the results in the data table. 
+Excel data tables (**Data** tab > **Data Tools** group > **What-If Analysis** > **Data Table**) should not be confused with the table feature (**Home** tab > **Styles** group > **Format as Table**, or, **Insert** tab > **Tables** group > **Table**). Excel data tables do multiple recalculations of the workbook, each driven by the different values in the table. Excel first calculates the workbook normally. For each pair of row and column values, it then substitutes the values, does a single-threaded recalculation, and stores the results in the data table. 
 
-*Data Table recalculation always uses only a single processor. *
-  
-    
-    
+*Data table recalculation always uses only a single processor.*
+
 Data tables give you a convenient way to calculate multiple variations and view and compare the results of the variations. Use the **Automatic except Tables** calculation option to stop Excel from automatically triggering the multiple calculations at each calculation, but still calculate all dependent formulas except tables.
-  
-    
-    
 
 ## Controlling Calculation Options
 <a name="ExcelPerf_ControllingCalculationOptions"> </a>
