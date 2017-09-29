@@ -6,7 +6,7 @@ ms.date: 9/29/2017
 
 # Excel performance: Performance and limit improvements
 
-**Provided by:** ![MVP Contributor](images/mvp_avatar.jpg) Charles Williams, [Decision Models Limited](http://www.decisionmodels.com/) | [About the author](excel-improving-calcuation-performance.md#xlAboutAuthor)
+**Provided by:** ![MVP Contributor](images/mvp_avatar.jpg) Charles Williams, [Decision Models Limited](http://www.decisionmodels.com/) | [About the author](#about-the-author)
 
 Excel 2016 introduces new features that you can use to improve performance when you're working with large or complex Excel workbooks.
 
@@ -115,9 +115,9 @@ In addition, starting in Excel 2010, support for hardware acceleration improves 
  
 ### Calculation improvements
 
-Starting in Excel 2007, multithreaded calculation improved calculation performance. For more information, see  [Multithreaded Calculation](#MultithreadedCalculation). 
+Starting in Excel 2007, multithreaded calculation improved calculation performance. For more information, see [Multithreaded Calculation](#MultithreadedCalculation). 
 
-Starting in Excel 2010, additional performance improvements were made to further increase calculation speed. Excel 2010 can call user-defined functions asynchronously. Calling functions asynchronously improves performance by allowing several calculations to run at the same time. When you run user-defined functions on a compute cluster, calling functions asynchronously enables several computers to be used to complete the calculations. For more information, see  [Asynchronous User-Defined Functions](http://msdn.microsoft.com/library/142eb27e-fb6f-4da3-bfb7-a88115bbb5d5%28Office.14%29.aspx).
+Starting in Excel 2010, additional performance improvements were made to further increase calculation speed. Excel 2010 can call user-defined functions asynchronously. Calling functions asynchronously improves performance by allowing several calculations to run at the same time. When you run user-defined functions on a compute cluster, calling functions asynchronously enables several computers to be used to complete the calculations. For more information, see [Asynchronous User-Defined Functions](http://msdn.microsoft.com/library/142eb27e-fb6f-4da3-bfb7-a88115bbb5d5%28Office.14%29.aspx).
 
 ### Multi-core processing
 
@@ -147,7 +147,6 @@ For more information about HPC Services for Excel 2010, see [Accelerating Excel 
 Excel 2016 introduces performance and limitation improvements focused on increasing Excel's ability to efficiently handle large and complex workbooks. These improvements allow Excel to scale along with hardware, improving performance as the CPU and RAM capacity of computers expand.
 
 ## About the author
-<a name="xlAboutAuthor"> </a>
 
 Charles Williams founded Decision Models in 1996 to provide advanced consultancy, decision support solutions, and tools that are based on Excel and relational databases. Charles is the author of [FastExcel](http://www.decisionmodels.com/fastexcel.htm "FastExcel"), the widely used Excel performance profiler and performance tool set, and co-author of *Name Manager*, the popular utility for managing defined names. 
 
