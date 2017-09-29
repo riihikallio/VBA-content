@@ -151,107 +151,57 @@ Excel data tables (**Data** tab > **Data Tools** group > **What-If Analysis** > 
 
 Data tables give you a convenient way to calculate multiple variations and view and compare the results of the variations. Use the **Automatic except Tables** calculation option to stop Excel from automatically triggering the multiple calculations at each calculation, but still calculate all dependent formulas except tables.
 
-## Controlling Calculation Options
-<a name="ExcelPerf_ControllingCalculationOptions"> </a>
+## Controlling calculation options
 
 Excel has a range of options that enable you to control the way it calculates. You can change the most frequently used options in Excel by using the **Calculation** group on the **Formulas** tab on the Ribbon.
-  
-    
-    
 
-**Figure 1. Calculation group on the Formulas tab**
+*Figure 1. Calculation group on the Formulas tab*
 
-  
-    
-    
-
-  
 ![Calculation options on the Formulas tab](images/ocd_xl2010_ta_improvingcalculationperf_fig01.jpg)
     
- 
-    
-    
-To see more Excel calculation options, click the **File** tab, and click **Options**. In the **Excel Options** dialog box, click the **Formulas** tab.
-  
-    
-    
+To see more Excel calculation options, on the **File** tab, click **Options**. In the **Excel Options** dialog box, click the **Formulas** tab.
 
-**Figure 2. Calculation options on the Formulas tab in Excel Options**
+*Figure 2. Calculation options on the Formulas tab in Excel Options*
 
-  
-    
-    
-
-  
-    
-    
 ![Calculation options in backstage view](images/ocd_xl2010_ta_improvingcalculationperf_fig02.jpg)
-  
-    
-    
-Many calculation options ( **Automatic**, **Automatic except for data tables**, **Manual**, **Recalculate workbook before saving**) and the iteration settings ( **Enable iterative calculation**, **Maximum Iterations**, **Maximum Change**) operate at the application level instead of at the workbook level (they are the same for all open workbooks). 
-  
-    
-    
-To find advanced calculation options, click the **File** tab, and click **Options**. In the **Excel Options** dialog box, click **Advanced**. Under the **Formulas** section set calculation options.
-  
-    
-    
 
-**Figure 3. Advanced calculation options**
+Many calculation options (**Automatic**, **Automatic except for data tables**, **Manual**, **Recalculate workbook before saving**) and the iteration settings (**Enable iterative calculation**, **Maximum Iterations**, **Maximum Change**) operate at the application level instead of at the workbook level (they are the same for all open workbooks). 
 
-  
-    
-    
+To find advanced calculation options, on the **File** tab, click **Options**. In the **Excel Options** dialog box, click **Advanced**. Under the **Formulas** section, set calculation options.
 
+*Figure 3. Advanced calculation options*
+
+![Advanced calculation options in backstage view](images/ocd_xl2010_ta_improvingcalculationperf_fig03.jpg)
   
-    
-    
-![Advanced calc options in backstage view](images/ocd_xl2010_ta_improvingcalculationperf_fig03.jpg)
-  
-    
-    
 When you start Excel, or when it is running without any workbooks open, the initial calculation mode and iteration settings are set from the first non-template, non-add-in workbook that you open. This means that the calculation settings in workbooks opened later are ignored, although, of course, you can manually change the settings in Excel at any time. When you save a workbook, the current calculation settings are stored in the workbook.
-  
-    
-    
 
-### Automatic Calculation
+### Automatic calculation
 
-Automatic calculation mode means that Excel automatically recalculates all open workbooks at every change, and when you open a workbook. Usually when you open a workbook in automatic mode and Excel recalculates, you do not see the recalculation because nothing has changed since the workbook was saved.
-  
-    
-    
+Automatic calculation mode means that Excel automatically recalculates all open workbooks at every change and when you open a workbook. Usually when you open a workbook in automatic mode and Excel recalculates, you do not see the recalculation because nothing has changed since the workbook was saved.
+
 You might notice this calculation when you open a workbook in a later version of Excel than you used the last time that the workbook was calculated (for example, Excel 2016 versus Excel 2013). Because the Excel calculation engines are different, Excel performs a full calculation when it opens a workbook that was saved using an earlier version of Excel.
-  
-    
-    
 
-### Manual Calculation
+### Manual calculation
 
-Manual calculation mode means that Excel recalculates all open workbooks only when you request it by pressing F9 or Ctrl+Alt+F9, or when you save a workbook. For workbooks that take more than a fraction of a second to recalculate, you must set calculation to manual mode to avoid an irritating delay when you make changes.
-  
-    
-    
+Manual calculation mode means that Excel recalculates all open workbooks only when you request it by pressing F9 or Ctrl+Alt+F9, or when you save a workbook. For workbooks that take more than a fraction of a second to recalculate, you must set calculation to manual mode to avoid a delay when you make changes.
+ 
 Excel tells you when a workbook in manual mode needs recalculation by displaying **Calculate** in the status bar. The status bar also displays **Calculate** if your workbook contains circular references and the iteration option is selected. 
-  
-    
-    
 
-### Iteration Settings
+### Iteration settings
 
-If you have intentional circular references in your workbook, the iteration settings enable you to control the maximum number of times the workbook is recalculated (iterations) and the convergence criteria (maximum change: when to stop). Usually you should clear the iteration box so that if you have accidental circular references, Excel will warn you and will not try to solve them.
-  
+If you have intentional circular references in your workbook, the iteration settings enable you to control the maximum number of times the workbook is recalculated (iterations) and the convergence criteria (maximum change: when to stop). Clear the iteration box so that if you have accidental circular references, Excel will warn you and will not try to solve them.
     
-### Workbook ForceFullCalculation Property
-When you set this workbook property to True Excel's Smart Recalculation is turned off and every recalculation recalculates all the formulas in all the open workbooks.
-For some complex workbooks the time taken to build and maintain the dependency trees needed for Smart Recalculation is larger than the time saved by Smart Recalculation.
-If your workbook takes an excessively long time to open or making small changes takes a long time even in manual calculation mode it may be worth trying ForceFullCalculation.
-**Calculate** will appear in the Status Bar if the workbook **ForceFullCalculation** property has been set to True. 
+### Workbook ForceFullCalculation property
+
+When you set this workbook property to True, Excel's Smart Recalculation is turned off and every recalculation recalculates all the formulas in all the open workbooks. For some complex workbooks, the time taken to build and maintain the dependency trees needed for Smart Recalculation is larger than the time saved by Smart Recalculation.
+
+If your workbook takes an excessively long time to open, or making small changes takes a long time even in manual calculation mode, it may be worth trying ForceFullCalculation.
+
+**Calculate** will appear in the status bar if the workbook **ForceFullCalculation** property has been set to True. 
 
 You can control this setting using the **VBE** (Alt+F11), selecting **ThisWorkbook** in the **Project Explorer** (Ctrl+R) and showing the **Properties Window** (F4).
 
-**Figure 4. Setting the Workbook.ForceFullCalculation property**
+*Figure 4. Setting the Workbook.ForceFullCalculation property*
 
 ![Setting ForceFullCalculation](images/ImprovingCalculationPerf_ForceFull.jpg)
 
