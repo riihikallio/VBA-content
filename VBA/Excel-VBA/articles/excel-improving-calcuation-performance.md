@@ -544,7 +544,7 @@ You could write the formula using **SUM**, which is an efficient function.
 
 *Figure 6. Example of period-to-date SUM formulas*
 
-![Period to date sum formula example](images/ocd_xl2010_ta_improvingcalculationperf_fig06.jpg)
+![Period to date SUM formula example](images/ocd_xl2010_ta_improvingcalculationperf_fig06.jpg)
    
 Copy the formula down to B2000.
 
@@ -574,9 +574,10 @@ If you have a calculation-intensive formula where you want the result to be show
 - You can write it as two formulas, which is fast:
     
     `A1=time expensive formula`
+    
     `B1=IF(ISERROR(A1),0,A1)`
 
-- Or you can use the **IFERROR** function, which is designed to be fast and simple, and it is a single formula:
+- Or you can use the **IFERROR** function, which is designed to be fast and simple, and is a single formula:
     
     `B1=IFERROR(time expensive formula,0)`
 
@@ -584,7 +585,7 @@ If you have a calculation-intensive formula where you want the result to be show
 
 #### Dynamic count unique
 
-*Figure 7. Example list of data for Count Unique*
+*Figure 7. Example list of data for count unique*
  
 ![Count unique data example](images/ocd_xl2010_ta_improvingcalculationperf_fig07.jpg)
 
