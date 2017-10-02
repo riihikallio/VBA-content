@@ -58,7 +58,9 @@ You can do this by using a large range in your formulas that extends well beyond
 
 ### Use structured table references (recommended)
 
-Starting in Excel 2007, you can use structured table references, which automatically expand and contract as the size of the referenced table increases or decreases. This solution has several advantages:
+Starting in Excel 2007, you can use structured table references, which automatically expand and contract as the size of the referenced table increases or decreases. 
+
+This solution has several advantages:
 
 - Fewer performance disadvantages exist than the alternatives of whole column referencing and dynamic ranges.
 
@@ -144,7 +146,7 @@ The following code example shows the syntax for the **VLOOKUP** and **HLOOKUP** 
      
 - **Range-lookup=FALSE** requests an exact match and assumes the data is not sorted.
     
-Avoid performing lookups on unsorted data where possible because it is slow. If your data is sorted, but you want an exact match, see [Sorted data with missing values](#xlSortedDataMissingValues).
+Avoid performing lookups on unsorted data where possible because it is slow. If your data is sorted, but you want an exact match, see [Use two lookups for sorted data with missing values](#use-two-lookups-for-sorted-data-with-missing-values).
 
 ### Use INDEX and MATCH or OFFSET instead of VLOOKUP 
 
@@ -171,7 +173,6 @@ Because exact match lookups can be slow, consider the following options for impr
 - When you must use an exact match lookup, restrict the range of cells to be scanned to a minimum. Use tables and structured references or dynamic range names rather than referring to a large number of rows or columns. Sometimes you can pre-calculate a lower-range limit and upper-range limit for the lookup.  
 
 ### Use two lookups for sorted data with missing values
-<a name="xlSortedDataMissingValues"> </a>
 
 *Two approximate matches are significantly faster than one exact match for a lookup over more than a few rows.* (The breakeven point is about 10-20 rows.)
 
@@ -243,7 +244,7 @@ Add an extra column for the **MATCH** to store the result (`stored_row`), and fo
   INDEX(Lookup_Range,stored_row,column_number)
 ```
 
-Alternatively, you can use **VLOOKUP** in an array formula. (Array formulas must be entered by using **Ctrl-Shift-Enter**. Excel will add the { and } to show you that this is an array formula).
+Alternatively, you can use **VLOOKUP** in an array formula. (Array formulas must be entered by using Ctrl+-Shift+Enter. Excel will add the { and } to show you that this is an array formula).
 
 ```
   {VLOOKUP(lookupvalue,{4,2},FALSE)}
@@ -281,16 +282,16 @@ It is often more efficient to calculate a subset range for the lookup (for examp
 
 To look up the table to use in addition to the row and the column, you can use the following techniques, focusing on how to make Excel look up or choose the table.
 
-- If each table that you want to look up (the third dimension) is stored as a set of named structured tables, range names, or as a table of text strings that represent ranges, you might be able to use the **CHOOSE** or **INDIRECT** functions.
+If each table that you want to look up (the third dimension) is stored as a set of named structured tables, range names, or as a table of text strings that represent ranges, you might be able to use the **CHOOSE** or **INDIRECT** functions.
 
-  Using **CHOOSE** and range names can be an efficient method. **CHOOSE** is not volatile, but it is best-suited to a relatively small number of tables. This example dynamically uses `TableLookup_Value` to choose which range name (`TableName1, TableName2, ...`) to use for the lookup table.
+- Using **CHOOSE** and range names can be an efficient method. **CHOOSE** is not volatile, but it is best-suited to a relatively small number of tables. This example dynamically uses `TableLookup_Value` to choose which range name (`TableName1, TableName2, ...`) to use for the lookup table.
 
   ```
     INDEX(CHOOSE(TableLookup_Value,TableName1,TableName2,TableName3), _
     MATCH(RowLookup_Value,$A$2:$A$1000),MATCH(colLookup_value,$B$1:$Z$1))
   ```
 
-  The following example uses the **INDIRECT** function and `TableLookup_Value` to dynamically create the sheet name to use for the lookup table. This method has the advantage of being simple and able to handle a large number of tables. Because **INDIRECT** is a volatile single-threaded function, the lookup is single-thread calculated at every calculation even if no data has changed. Using this method is slow.
+- The following example uses the **INDIRECT** function and `TableLookup_Value` to dynamically create the sheet name to use for the lookup table. This method has the advantage of being simple and able to handle a large number of tables. Because **INDIRECT** is a volatile single-threaded function, the lookup is single-thread calculated at every calculation even if no data has changed. Using this method is slow.
   
   ```
     INDEX(INDIRECT("Sheet" &amp; TableLookup_Value &amp; "!$B$2:$Z$1000"), _
@@ -303,7 +304,7 @@ To look up the table to use in addition to the row and the column, you can use t
     INDEX(INDIRECT(VLOOKUP(TableLookup_Value,TableOfTAbles,1)),MATCH(RowLookup_Value,$A$2:$A$1000),MATCH(colLookup_value,$B$1:$Z$1))
   ```
 
-- Another technique is to aggregate all your tables into one giant table that has an additional column that identifies the individual tables. You can then use the techniques for multiple-index lookup shown in the previous examples.
+Another technique is to aggregate all your tables into one giant table that has an additional column that identifies the individual tables. You can then use the techniques for multiple-index lookup shown in the previous examples.
 
 ### Use wildcard lookup
 
@@ -323,7 +324,7 @@ To optimize the calculation speed of array formulas:
      
 - Starting in Excel 2007, use structured references where you can to keep the number of cells that are evaluated by the array formula to a minimum.
      
-- In versions before Excel 2007, use dynamic range names where possible. Although they are volatile, it is worthwhile because they minimize the size of the ranges.
+- In versions earlier than Excel 2007, use dynamic range names where possible. Although they are volatile, it is worthwhile because they minimize the size of the ranges.
     
 - Be careful with array formulas that reference both a row and a column: this forces the calculation of a rectangular range.
     
@@ -344,7 +345,7 @@ If you must use array formulas, some good methods of speeding them up are as fol
 
 - Consider concatenating together all the conditions into a single condition, and then using **SUMIF**.
 
-- If the data can be sorted, a good technique is to count groups of rows and limit the array formulas to looking at the subset groups.
+- If the data can be sorted, count groups of rows and limit the array formulas to looking at the subset groups.
     
 ### Prioritize multiple-condition SUMIFS, COUNTIFS, and other IFS family functions
   
@@ -702,7 +703,7 @@ The following is a list of additional performance optimizations you can use in y
 
 - Declare variables with explicit types to avoid the overhead of determining the data type, possibly multiple times in a loop, during code execution.
 
-- For simple functions that you use frequently in your code, implement the functions yourself in VBA instead of using the **WorksheetFunction** object. For more information, see [Use faster VBA user-defined functions](#use-faster-VBA-user-defined-functions).
+- For simple functions that you use frequently in your code, implement the functions yourself in VBA instead of using the **WorksheetFunction** object. For more information, see [Use faster VBA user-defined functions](#use-faster-vba-user-defined-functions).
 
 - Use the **Range.SpecialCells** method to scope down the number of cells with which your code interacts.
 
