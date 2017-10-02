@@ -2,6 +2,7 @@
 title: Excel performance - Performance and limit improvements
 description: Find out about performance improvements in Excel 2016 and Excel 2010. 
 ms.date: 09/29/2017 
+author: FastExcel
 ---
 
 # Excel performance: Performance and limit improvements
