@@ -2,6 +2,7 @@
 title: Excel performance - Improving calculation performance
 description: Discover how to improve workbook performance by focusing on calculation improvements in Excel 2016.
 ms.date: 09/29/2017 
+author: FastExcel
 ---
 
 # Excel performance: Improving calculation performance
