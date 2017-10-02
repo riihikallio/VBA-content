@@ -2,6 +2,7 @@
 title: Excel performance - Tips for optimizing performance obstructions
 description: Learn about ways to optimize Excel functionality such as links, lookups, formulas, functions, and VBA code to avoid common obstructions and improve performance.
 ms.date: 10/02/2017 
+author: FastExcel
 ---
 
 # Excel performance: Tips for optimizing performance obstructions
