@@ -20,7 +20,7 @@ To increase clarity and avoid errors, design your formulas so that they do not r
 
 ### Minimize use of circular references with iteration
 
-Calculating circular references with iterations is slow because multiple calculations are needed and these calculations are single-threaded. Frequently you can "unroll" the circular references by using algebra so that iterative calculation is no longer needed. For example, in cash flow and interest calculations, try to calculate the cash flow before interest, calculate the interest, and then calculate the cash flow including the interest.
+Calculating circular references with iterations is slow because multiple calculations are needed, and these calculations are single-threaded. Frequently you can "unroll" the circular references by using algebra so that iterative calculation is no longer needed. For example, in cash flow and interest calculations, try to calculate the cash flow before interest, calculate the interest, and then calculate the cash flow including the interest.
  
 Excel calculates circular references sheet-by-sheet without considering dependencies. Therefore, you usually get slow calculation if your circular references span more than one worksheet. Try to move the circular calculations onto a single worksheet or optimize the worksheet calculation sequence to avoid unnecessary calculations.
   
@@ -34,7 +34,7 @@ It is important to reduce the number of cells in the circular calculation and th
 
 Avoid inter-workbook links when it is possible; they can be slow, easily broken, and not always easy to find and fix.
 
-Using fewer larger workbooks is usually, but not always, better than using many smaller workbooks. Some exceptions to this might be when you have many front-end calculations that are so rarely recalculated that it makes sense to put them in a separate workbook, or when you you have insufficient RAM.
+Using fewer larger workbooks is usually, but not always, better than using many smaller workbooks. Some exceptions to this might be when you have many front-end calculations that are so rarely recalculated that it makes sense to put them in a separate workbook, or when you have insufficient RAM.
 
 Try to use simple direct cell references that work on closed workbooks. By doing this, you can avoid recalculating *all* your linked workbooks when you recalculate *any* workbook. Also, you can see the values Excel has read from the closed workbook, which is frequently important for debugging and auditing the workbook.
  
@@ -72,7 +72,7 @@ An alternative approach is to use a whole column reference, for example **$A:$A*
 
 This solution has both advantages and disadvantages:
 
-- Many Excel built-in functions ( **SUM**, **SUMIF**) calculate whole column references efficiently because they automatically recognize the last used row in the column. However, array calculation functions like **SUMPRODUCT** either cannot handle whole column references or calculate all the cells in the column.
+- Many Excel built-in functions (**SUM**, **SUMIF**) calculate whole column references efficiently because they automatically recognize the last used row in the column. However, array calculation functions like **SUMPRODUCT** either cannot handle whole column references or calculate all the cells in the column.
 
 - User-defined functions do not automatically recognize the last-used row in the column and, therefore, frequently calculate whole column references inefficiently. However, it is easy to program user-defined functions so that they recognize the last-used row.
 
@@ -206,7 +206,7 @@ Be aware that if you look up a value smaller than the smallest value in the list
 
 ### Use IFERROR function for unsorted data with missing values
 
-If you have to use exact match lookup on unsorted data, and you cannot be sure whether the lookup value exists, you often have to handle the #N/A that is returned if no match is found. Beginning with Excel 2007, you can use the **IFERROR** function, which is both simple and fast.  
+If you must use exact match lookup on unsorted data, and you cannot be sure whether the lookup value exists, you often must handle the #N/A that is returned if no match is found. Beginning with Excel 2007, you can use the **IFERROR** function, which is both simple and fast.  
 
 ```
   IF IFERROR(VLOOKUP(lookupval, table, 2 FALSE),0)
@@ -237,7 +237,7 @@ If you cannot use two cells, use **COUNTIF**. It is generally faster than an exa
 
 You can often reuse a stored exact **MATCH** many times. For example, if you are doing exact lookups on multiple result columns, you can save time by using one **MATCH** and many **INDEX** statements rather than many **VLOOKUP** statements.
  
-Add an extra column for the **MATCH** to store the result (stored_row), and for each result column use the following: 
+Add an extra column for the **MATCH** to store the result (`stored_row`), and for each result column use the following: 
 
 ```
   INDEX(Lookup_Range,stored_row,column_number)
@@ -311,7 +311,7 @@ The **MATCH**, **VLOOKUP**, and **HLOOKUP** functions allow you to use the wildc
 
 ## Optimize array formulas and SUMPRODUCT
 
-Array formulas and the **SUMPRODUCT** function are powerful, but you must handle them carefully. A single array formula might require a large number of calculations. 
+Array formulas and the **SUMPRODUCT** function are powerful, but you must handle them carefully. A single array formula might require many calculations. 
     
 The key to optimizing the calculation speed of array formulas is to ensure that the number of cells and expressions that are evaluated in the array formula is as small as possible. Remember that an array formula is a bit like a volatile formula: if any one of the cells that it references has changed, is volatile, or has been recalculated, the array formula calculates all the cells in the formula and evaluates all the virtual cells it needs to do the calculation.
  
@@ -330,7 +330,7 @@ To optimize the calculation speed of array formulas:
 - Use **SUMPRODUCT** if possible; it is slightly faster than the equivalent array formula.
     
 
-### Consider options for using array formulas SUM with multiple conditions
+### Consider options for using SUM for multiple-condition array formulas
 
 You should always use the **SUMIFS**, **COUNTIFS**, and **AVERAGEIFS** functions instead of array formulas where you can because they are much faster to calculate. Excel 2016 introduces fast **MAXIFS** and **MINIFS** functions.  
       
@@ -346,9 +346,9 @@ If you must use array formulas, some good methods of speeding them up are as fol
 
 - If the data can be sorted, a good technique is to count groups of rows and limit the array formulas to looking at the subset groups.
     
-### Prioritize multiple condition SUMIFS, COUNTIFS, and other IFS family functions
+### Prioritize multiple-condition SUMIFS, COUNTIFS, and other IFS family functions
   
-All of these functions evaluate each of the conditions from left to right in turn. So it is more efficient to put the most restrictive condition first, so that subsequent conditions only need to look at the smallest number of rows.
+These functions evaluate each of the conditions from left to right in turn. Therefore, it is more efficient to put the most restrictive condition first, so that subsequent conditions only need to look at the smallest number of rows.
 
 ### Consider options for using SUMPRODUCT for multiple-condition array formulas
 
@@ -423,7 +423,7 @@ Most native Excel functions work well with multi-threaded calculation. However, 
 - CUBERANKEDMEMBER
 - CUBEKPIMEMBER
 - CUBESETCOUNT
-- ADDRESS where the fifth parameter (the sheet_name) is given
+- ADDRESS where the fifth parameter (the `sheet_name`) is given
 - Any database function (DSUM, DAVERAGE, and so on) that refers to a pivot table
 - ERROR.TYPE
 - HYPERLINK
@@ -452,7 +452,7 @@ It is usually faster to use the Excel formula calculations and worksheet functio
   
 Ensure that you have put all the references to worksheet cells in the user-defined function input parameters instead of in the body of the user-defined function, so that you can avoid adding **Application.Volatile** unnecessarily.
   
-If you must have a large number of formulas that use user-defined functions, ensure that you are in manual calculation mode, and that the calculation is initiated from VBA. VBA user-defined functions calculate much more slowly if the calculation is *not* called from VBA (for example, in automatic mode or when you press F9 in manual mode). This is particularly true when the Visual Basic Editor (Alt+F11) is open or has been opened in the current Excel session.
+If you must have many formulas that use user-defined functions, ensure that you are in manual calculation mode, and that the calculation is initiated from VBA. VBA user-defined functions calculate much more slowly if the calculation is *not* called from VBA (for example, in automatic mode or when you press F9 in manual mode). This is particularly true when the Visual Basic Editor (Alt+F11) is open or has been opened in the current Excel session.
  
 You can trap F9 and redirect it to a VBA calculation subroutine as follows. Add this subroutine to the *Thisworkbook* module.
 
@@ -565,7 +565,7 @@ Use the following tips to create faster VBA macros.
 
 ### Turn off everything but the essentials while code is running
 
-To improve performance for VBA macros, explicitly turn off the functionality that is not required while your code executes. Often, one recalculation or one redraw after your code runs is all that is necessary, and can improve performance. After your code executes, restore the functionality to its original state.
+To improve performance for VBA macros, explicitly turn off the functionality that is not required while your code executes. Often, one recalculation or one redraw after your code runs is all that is necessary and can improve performance. After your code executes, restore the functionality to its original state.
 
 The following functionality can usually be turned off while your VBA macro executes:
 
@@ -718,11 +718,11 @@ Starting in Excel 2007, Excel contains a wide variety of file formats compared t
 
 - **XLSB format**
 
-  XLSB is the binary format starting in Excel 2007. It is structured as a compressed folder that contains a large number of binary files. It is much more compact than the XLS format, but the amount of compression depends on the contents of the workbook. For example, ten workbooks show a size reduction factor ranging from two to eight with an average reduction factor of four. Starting in Excel 2007, opening and saving performance is only slightly slower than the XLS format.
+  XLSB is the binary format starting in Excel 2007. It is structured as a compressed folder that contains many binary files. It is much more compact than the XLS format, but the amount of compression depends on the contents of the workbook. For example, ten workbooks show a size reduction factor ranging from two to eight with an average reduction factor of four. Starting in Excel 2007, opening and saving performance is only slightly slower than the XLS format.
 
 - **XLSX format**
 
-  XLSX is the XML format starting in Excel 2007, and is the default format starting in Excel 2007. The XLSX format is a compressed folder that contains a large number of XML files (if you change the file name extension to .zip, you can open the compressed folder and examine its contents). Typically, the XLSX format creates larger files than the XLSB format (1.5 times larger on average), but they are still significantly smaller than the XLS files. You should expect opening and saving times to be slightly longer than for XLSB files. 
+  XLSX is the XML format starting in Excel 2007, and is the default format starting in Excel 2007. The XLSX format is a compressed folder that contains many XML files (if you change the file name extension to .zip, you can open the compressed folder and examine its contents). Typically, the XLSX format creates larger files than the XLSB format (1.5 times larger on average), but they are still significantly smaller than the XLS files. You should expect opening and saving times to be slightly longer than for XLSB files. 
 
 ## Open, close, and save workbooks
 
@@ -732,9 +732,9 @@ If one or more of your workbooks open and close more slowly than is reasonable, 
 
 - **Temporary files**
 
-  Temporary files can accumulate in your \\Windows\\Temp directory (in Windows 95, Windows 98, and Windows ME), or your \\Documents and Settings\\User Name\\Local Settings\\Temp directory (in Windows 2000 and Windows XP). Excel creates these files for the workbook, and in particular, for controls that are used by open workbooks. Software installation programs also create temporary files. If Excel stops responding for any reason, you might need to delete these files. 
+  Temporary files can accumulate in your \\Windows\\Temp directory (in Windows 95, Windows 98, and Windows ME), or your \\Documents and Settings\\User Name\\Local Settings\\Temp directory (in Windows 2000 and Windows XP). Excel creates these files for the workbook and for controls that are used by open workbooks. Software installation programs also create temporary files. If Excel stops responding for any reason, you might need to delete these files. 
 
-  Too many temporary files can cause problems, so you should occasionally clean them out. However, if you have installed software that requires that you restart your computer and you have not yet done so, you should restart before deleting the temporary files. 
+  Too many temporary files can cause problems, so you should occasionally clean them out. However, if you have installed software that requires that you restart your computer, and you have not yet done so, you should restart before deleting the temporary files. 
 
   An easy way to open your temp directory is from the Windows **Start** menu: Click **Start**, and then click **Run**. In the text box, type **%temp%**, and then click **OK**.
 
@@ -794,7 +794,7 @@ You can make performance improvements in the following areas.
 
 - **Conditional formats and data validation**
 
-  Conditional formats and data validation are great, but using a lot of them can significantly slow down calculation. If the cell is displayed, every conditional format formula is evaluated at each calculation and also when the display of the cell that contains the conditional format is refreshed. The Excel object model has a **Worksheet.EnableFormatConditionsCalculation** property so that you can enable or disable the calculation of conditional formats.
+  Conditional formats and data validation are great, but using a lot of them can significantly slow down calculation. If the cell is displayed, every conditional format formula is evaluated at each calculation and when the display of the cell that contains the conditional format is refreshed. The Excel object model has a **Worksheet.EnableFormatConditionsCalculation** property so that you can enable or disable the calculation of conditional formats.
 
 - **Defined names**
 
@@ -808,7 +808,7 @@ You can make performance improvements in the following areas.
 
 - **Use enough memory**
 
-  The 32-bit version of Excel is capable of using up to 2 GB of RAM. However, the computer that is running Excel also requires memory resources. Therefore, if you only have 2 GB of RAM on your computer, Excel cannot take advantage of the full 2 GB because a portion of the memory is allocated to the operating system and other programs that are running. To optimize the performance of Excel on a 32-bit computer, we recommend that the computer have at least 3 GB of RAM.
+  The 32-bit version of Excel can use up to 2 GB of RAM. However, the computer that is running Excel also requires memory resources. Therefore, if you only have 2 GB of RAM on your computer, Excel cannot take advantage of the full 2 GB because a portion of the memory is allocated to the operating system and other programs that are running. To optimize the performance of Excel on a 32-bit computer, we recommend that the computer have at least 3 GB of RAM.
 
   The 64-bit version of Excel does not have a 2 GB limit. For more information, see the "Large data sets and the 64-bit version of Excel" section in [Excel performance: Performance and limit improvements](excel-performance-and-limit-improvements.md).
 
