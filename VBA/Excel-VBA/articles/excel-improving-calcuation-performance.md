@@ -1,13 +1,13 @@
 ---
 title: Excel performance - Improving calculation performance
 description: Discover how to improve workbook performance by focusing on calculation improvements in Excel 2016.
-ms.date: 09/29/2017 
+ms.date: 10/06/2017 
 author: FastExcel
 ---
 
 # Excel performance: Improving calculation performance
 
-**Provided by:** ![MVP Contributor](images/mvp_avatar.jpg) Charles Williams, [Decision Models Limited](http://www.decisionmodels.com/) | [About the author](#about-the-author)
+**Applies to:** Excel | Excel 2013 | Excel 2016 | VBA
 
 The "Big Grid" of 1 million rows and 16,000 columns in Office Excel 2016, together with many other limit increases, greatly increases the size of worksheets that you can build compared to earlier versions of Excel. A single worksheet in Excel can now contain over 1,000 times as many cells as earlier versions.
 
@@ -651,13 +651,6 @@ If you have a list of 11,000 rows of data in column A, which frequently changes,
 Excel enables you to effectively manage much larger worksheets, and it provides significant improvements in calculation speed compared with early versions. When you create large worksheets, it is easy to build them in a way that causes them to calculate slowly. Slow-calculating worksheets increase errors because users find it difficult to maintain concentration while calculation is occurring.
 
 By using a straightforward set of techniques, you can speed up most slow-calculating worksheets by a factor of 10 or 100. You can also apply these techniques as you design and create worksheets to ensure that they calculate quickly.
-
-## About the author
-
-Charles Williams founded Decision Models in 1996 to provide advanced consultancy, decision support solutions, and tools that are based on Excel and relational databases. Charles is the author of [FastExcel](http://www.decisionmodels.com/fastexcel.htm "FastExcel"), the widely used Excel performance profiler and performance tool set, and co-author of *Name Manager*, the popular utility for managing defined names. 
-
-For more information about Excel calculation performance and methods, memory usage, and VBA user-defined functions, visit the [Decision Models](http://www.decisionmodels.com/) website and the [FastExcel Blog](https://fastexcel.wordpress.com/ "FastExcel Blog").
-  
 
 ## Additional resources
 

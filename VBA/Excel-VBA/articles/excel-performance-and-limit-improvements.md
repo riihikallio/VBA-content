@@ -1,13 +1,13 @@
 ---
 title: Excel performance - Performance and limit improvements
 description: Find out about performance improvements in Excel 2016 and Excel 2010. 
-ms.date: 09/29/2017 
+ms.date: 10/06/2017 
 author: FastExcel
 ---
 
 # Excel performance: Performance and limit improvements
 
-**Provided by:** ![MVP Contributor](images/mvp_avatar.jpg) Charles Williams, [Decision Models Limited](http://www.decisionmodels.com/) | [About the author](#about-the-author)
+**Applies to:** Excel | Excel 2016 | Excel 2013 | Excel 2010 | Office 2016 | SharePoint Server 2010 | VBA
 
 Excel 2016 introduces new features that you can use to improve performance when you're working with large or complex Excel workbooks.
 
@@ -147,12 +147,6 @@ For more information about HPC Services for Excel 2010, see [Accelerating Excel 
 
 Excel 2016 introduces performance and limitation improvements focused on increasing Excel's ability to efficiently handle large and complex workbooks. These improvements allow Excel to scale along with hardware, improving performance as the CPU and RAM capacity of computers expand.
 
-## About the author
-
-Charles Williams founded Decision Models in 1996 to provide advanced consultancy, decision support solutions, and tools that are based on Excel and relational databases. Charles is the author of [FastExcel](http://www.decisionmodels.com/fastexcel.htm "FastExcel"), the widely used Excel performance profiler and performance tool set, and co-author of *Name Manager*, the popular utility for managing defined names. 
-
-For more information about Excel calculation performance and methods, memory usage, and VBA user-defined functions, visit the [Decision Models](http://www.decisionmodels.com/) website and the [FastExcel Blog](https://fastexcel.wordpress.com/ "FastExcel Blog").
-  
 ## Additional resources
 <a name="office2007excelperf_AdditionalResources"> </a>
 

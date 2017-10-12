@@ -1,13 +1,13 @@
 ---
 title: Excel performance - Tips for optimizing performance obstructions
 description: Learn about ways to optimize Excel functionality such as links, lookups, formulas, functions, and VBA code to avoid common obstructions and improve performance.
-ms.date: 10/02/2017 
+ms.date: 10/06/2017 
 author: FastExcel
 ---
 
 # Excel performance: Tips for optimizing performance obstructions
 
-**Provided by:** ![MVP Contributor](images/mvp_avatar.jpg) Charles Williams,  [Decision Models Limited](http://www.decisionmodels.com/) │ [About the author](#about-the-author)
+**Applies to:** Excel | Excel 2013 | Office 2016 | VBA
 
 Follow these tips for optimizing many frequently occurring performance obstructions in Excel. 
 
@@ -817,12 +817,6 @@ You can make performance improvements in the following areas.
 ## Conclusion
 
 This article covered ways to optimize Excel functionality such as links, lookups, formulas, functions, and VBA code to avoid common obstructions and improve performance.
-
-## About the author
-
-Charles Williams founded Decision Models in 1996 to provide advanced consultancy, decision support solutions, and tools that are based on Excel and relational databases. Charles is the author of [FastExcel](http://www.decisionmodels.com/fastexcel.htm "FastExcel"), the widely used Excel performance profiler and performance tool set, and co-author of *Name Manager*, the popular utility for managing defined names. 
-
-For more information about Excel calculation performance and methods, memory usage, and VBA user-defined functions, visit the [Decision Models](http://www.decisionmodels.com/) website and the [FastExcel Blog](https://fastexcel.wordpress.com/ "FastExcel Blog").
 
 ## Additional resources
 
