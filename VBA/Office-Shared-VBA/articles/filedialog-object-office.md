@@ -31,6 +31,8 @@ Use the  **FileDialog** property to return a **FileDialog** object. The **FileDi
     
 Each host application can only create a single instance of the  **FileDialog** object. Therefore, many of the properties of the **FileDialog** object persist even when you create multiple **FileDialog** objects. Therefore, make sure that you set all of the properties appropriately for your purpose before you display the dialog box.
 
+Outlook doesn't have the standard Open or Save dialogs and therefore no FileDialog object either.
+
 
 ## Example
 
